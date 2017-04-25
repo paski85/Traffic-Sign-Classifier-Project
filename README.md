@@ -40,13 +40,31 @@ Setting the rate to rate = 0.0004 was also helpful to finetune the weights to th
 Final accuracy on the test data set showed an accuracy of .933
 * Test Set Accuracy = 0.933
 
+LeNet introduced in *Lesson 8: CNN* was used initially, with the tweaks required to handle 32X32 3 colors and 43 classes.
+RGB performance was not satisfactory and the network was modified for 32X32 1 Grayscale.
+Adding drop-out was detrimental to accuracy and was removed.
+Reducing the batch size and increasing the number of EPOCHS was key to the final accuracy.
+Reducing the rate and increasing EPOCHS could also lead to further improvements.
+In the end, the original architecture was performing well enough and further accuracy could be reached with augmented datasets and more EPOCHS.
+
 ### 7. Accuracy on additional images sourced from Google Images.
 
 ![Alt text](download.png)
 
+These images are similar in style to the training dataset and not too challenging, I do not expect too many issues.
+The resolution of 32X32 could result in some confusion on the numbers as they are a bit smeared. 
+Some of the images had a watermark, no longer visible on rescaling but could influence a few of the pixels.
+Padding/cropping could also affect the results.
+
 * True Labels:      [0, 3, 38, 22, 25, 11, 12, 14]
 * Predicted Labels: [ 0,  3, 38, 22, 25, 11, 12, 14]
 * Accuracy: 1.0
+
+Initially, with less training (EPOCHS = 50) the network was struggling a lot with the numbers.
+After additional training and more accuracy the network is able to get good prediction for all the images.
+More challenging images (noise/distortion) would not be predicted so accurately, unless these types of transformations would be part of the training dataset.
+
+The reason for "perfect" detection is that these images are much less challenging than some of the training dataset, which includes more slanted images or occluded images.
 
 ### 8. Top 5 Hits per Google test images.
 * Truth for image 0: 0. Top 5 predictions: [ 0  4  1  8 13]
@@ -57,6 +75,8 @@ Final accuracy on the test data set showed an accuracy of .933
 * Truth for image 5: 11. Top 5 predictions: [11  0  1  2  3]
 * Truth for image 6: 12. Top 5 predictions: [12  9 40 41 17]
 * Truth for image 7: 14. Top 5 predictions: [14 25 38 36  5]
+
+
 
 ### 9. Activation of layers.
 TF unable to find the names of my layers(e.g. conv1) probably missing some return function somewhere. No relevant documentation found.
