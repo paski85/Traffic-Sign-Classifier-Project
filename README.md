@@ -70,9 +70,9 @@ TF unable to find the names of my layers(e.g. conv1) probably missing some retur
 6. Show activation of different layers
 
 ### 11. Sources
-https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/
-https://github.com/vburca/SDC-ND/blob/master/projects/p2-traffic_sign_classifier/
-https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
+* https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/
+* https://github.com/vburca/SDC-ND/blob/master/projects/p2-traffic_sign_classifier/
+* https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
 
 
 
