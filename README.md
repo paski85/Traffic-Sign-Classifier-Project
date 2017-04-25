@@ -64,7 +64,7 @@ Initially, with less training (EPOCHS = 50) the network was struggling a lot wit
 After additional training and more accuracy the network is able to get good prediction for all the images.
 More challenging images (noise/distortion) would not be predicted so accurately, unless these types of transformations would be part of the training dataset.
 
-The reason for "perfect" detection is that these images are much less challenging than some of the training dataset, which includes more slanted images or occluded images.
+The reason for "perfect" detection is that these images are much less challenging than some from the training dataset, which includes more slanted images, very dark or occluded images.
 
 ### 8. Top 5 Hits per Google test images.
 * Truth for image 0: 0. Top 5 predictions: [ 0  4  1  8 13]
@@ -75,6 +75,13 @@ The reason for "perfect" detection is that these images are much less challengin
 * Truth for image 5: 11. Top 5 predictions: [11  0  1  2  3]
 * Truth for image 6: 12. Top 5 predictions: [12  9 40 41 17]
 * Truth for image 7: 14. Top 5 predictions: [14 25 38 36  5]
+
+Looking at the softmax function the first class essentially had 100% confidence, with the following classes generally a decent prediction: for speed limits the suggestions are other speed limits. 
+Without color information, the keep right (image 2) sign could be suggestive of a speed limit sign (round and digit like shape)
+
+This tends to indicate that the chosen images were close to perfect representations of the trained internal model of the respective sign. 
+The images were near the top of the search results due to their relevance (search hits + Google image search secret sauce).
+
 
 
 
