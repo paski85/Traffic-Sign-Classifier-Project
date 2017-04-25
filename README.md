@@ -34,7 +34,7 @@ Setting the rate to rate = 0.0004 was also helpful to finetune the weights to th
 * EPOCHS = 200
 * BATCH_SIZE = 32
 * rate = 0.0004
-* Hyperparemeters left a default
+* Hyperparemeters left at default
 
 ### 6. Accuracy on test set
 Final accuracy on the test data set showed an accuracy of .933
