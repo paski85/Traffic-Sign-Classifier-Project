@@ -18,7 +18,7 @@ Attempt to augment dataset using tf.image.random_flip_up_down(image, seed=None) 
 * Image Shape: (32, 32, 3)
 * Number of classes = 43
 * Largest class:  750
-* Smalles class:  60
+* Smallest class:  60
 
 ### 3. Data preparation
 Grayscaling and normalization were helpful in bringing the accuracy from .87 to >.9
@@ -34,7 +34,7 @@ Setting the rate to rate = 0.0004 was also helpful to finetune the weights to th
 * EPOCHS = 200
 * BATCH_SIZE = 32
 * rate = 0.0004
-* Hyperparemeters left at default
+* Hyperparameters left at default
 
 ### 6. Accuracy on test set
 Final accuracy on the test data set showed an accuracy of .933
