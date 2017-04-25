@@ -13,70 +13,32 @@ Restart of KERNEL necessary several times before CUDA was functioning.
 Class sizes are very uneven from 60 to 750.
 Attempt to augment dataset using tf.image.random_flip_up_down(image, seed=None) or tflearn.data_augmentation.DataAugmentation (self) unsuccesful
 
+Training Set:   34799 samples
+Validation Set: 4410 samples
+Test Set:       12630 samples
+Image Shape: (32, 32, 3)
+Number of classes = 43
+Largest class:  750
+Smalles classt:  60
+
 ###3. Data preparation
 Grayscaling and normalization were helpful in bringing the accuracy from .87 to >.9
 
+###4. Network
+The standard LeNet from the course was used with the necessary changes for 32*32 and the output to 43 classes.
+Dropout was tested, but did not yield better performance (no overfitting yet?)
+An improved LeNet was attempted but did not improve results. 
 
+###5. Training
+Reducing the batch size down to 32 and increasing the EPOCHS to 200 was key to getting >.93 accuracy.
+Setting the rate to rate = 0.0004 was also helpful to finetune the weights to the required >.93 accuracy
+EPOCHS = 200
+BATCH_SIZE = 32
+rate = 0.0004
 
+###6. Accuracy on test set
+Final accuracy on the test data set showed an accuracy of .933
+Test Set Accuracy = 0.933
 
-
-
-Sources:
-
-
-
-
-Original frame is imported:
-
-![Alt text](./Pipeline/1_import.png?raw=true "Original Input image")
-
-Frame is grayscaled:
-
-![Alt text](./Pipeline/2_grayscale.png?raw=true "Grayscaled")
-
-Gaussian blur is applied to reduce noise:
-
-![Alt text](./Pipeline/3_blur_gray.png?raw=true "Gaussian blur to reduce noise")
-
-Canny Filter is applied to detect edges:
-
-![Alt text](./Pipeline/4_canny.png?raw=true "Canny Filter")
-
-ROI from (bottom_left) (max_x/2-x_res/50, .6*max_y) (max_x/2+x_res/50, .6*max_y) (bottom_right):
-
-![Alt text](./Pipeline/5_canny_roi.png?raw=true "ROI applied to Canny Filter")
-
-* Hough results are filtered according to slope ((y2-y1)/(x2-y2)) (positive right line/negative left line)
-* Vertical and Horizontal slopes are filtered out
-* The mean slope and standard dev is calculated
-* Outliers of mean+2_standard_devs are excluded
-* Mean slope is recalculated for left and right lines
-* Mean y-intercept is calculated
-* Lines starting from the bottom edge, going to .6*max_y are calculated using the mean left and right slope and y_intercept y=mx+b
-* A circular buffer of the mean left and right slopes of the last ten frames is kept to filter out outliers
-
-![Alt text](./Pipeline/6_lines_from_hough.png?raw=true "Hough Lines")
-
-The resulting lines are overlaid onto the original input image
-
-![Alt text](./Pipeline/7_overlaid.png?raw=true "Hough Lines applied on input image")
-
-
----
-
-### Reflection
-
-
-
-###2. Identify potential shortcomings with your current pipeline
-
-* The current pipeline is jittery at times.
-
-
-###3. Suggest possible improvements to your pipeline
-
-* To improve performance a check on the line y-intercept and a ring buffer of sensible y-intercepts could be kept from frame to frame.
-* y-intercepts can only change as fast as a lane change (e.g. 1000 pixels/s->25 pixels/frame-to-frame) 
-* Confidence in the lane could be color-coded (e.g. how many hough lines are detected)
-
+###7. Accuracy on additional images sourced from Google Images.
 
