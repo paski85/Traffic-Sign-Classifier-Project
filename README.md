@@ -34,6 +34,7 @@ Setting the rate to rate = 0.0004 was also helpful to finetune the weights to th
 * EPOCHS = 200
 * BATCH_SIZE = 32
 * rate = 0.0004
+* Hyperparemeters left a default
 
 ### 6. Accuracy on test set
 Final accuracy on the test data set showed an accuracy of .933
@@ -47,7 +48,7 @@ Final accuracy on the test data set showed an accuracy of .933
 * Predicted Labels: [ 0,  3, 38, 22, 25, 11, 12, 14]
 * Accuracy: 1.0
 
-### 7. Top 5 Hits per Google test images.
+### 8. Top 5 Hits per Google test images.
 * Truth for image 0: 0. Top 5 predictions: [ 0  4  1  8 13]
 * Truth for image 1: 3. Top 5 predictions: [ 3  2 10  5 31]
 * Truth for image 2: 38. Top 5 predictions: [38  0  1  2  3]
@@ -56,5 +57,23 @@ Final accuracy on the test data set showed an accuracy of .933
 * Truth for image 5: 11. Top 5 predictions: [11  0  1  2  3]
 * Truth for image 6: 12. Top 5 predictions: [12  9 40 41 17]
 * Truth for image 7: 14. Top 5 predictions: [14 25 38 36  5]
+
+### 9. Activation of layers.
+TF unable to find the names of my layers(e.g. conv1) probably missing some return function somewhere. No relevant documentation found.
+
+### 10. Future improvements.
+1. Augment sparse classes using TF or OpenCV (Rotation, transformation etc.)
+2. Play further with batch sizes and learning rate
+3. Re-enable dropout
+4. Try alternate network architectures 
+5. Get TensorBoard working to visualize network graph and get layer names
+6. Show activation of different layers
+
+### 11. Sources
+https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/
+https://github.com/vburca/SDC-ND/blob/master/projects/p2-traffic_sign_classifier/
+https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
+
+
 
 
